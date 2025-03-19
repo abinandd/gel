@@ -1,0 +1,1659 @@
+1. Hello World Program ( Write a program to Toast Hello World)
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".ToastMainActivity" >
+ <Button
+ android:id="@+id/buttonToast"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="44dp"
+ android:layout_marginTop="74dp"
+ android:text="Show Toast" />
+</RelativeLayout>
+MainActivity.java file
+package gems.andoubleos.onetoast;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+public class ToastMainActivity extends Activity {
+private Button button;
+
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_toast_main);
+
+ button = (Button) findViewById(R.id.buttonToast);
+ button.setOnClickListener(new OnClickListener() {
+ public void onClick(View arg0) {
+ Toast.makeText(getApplicationContext(),
+ "Hello World", Toast.LENGTH_LONG).show();
+ }
+ });
+ }
+ }
+
+
+
+
+2. Addition of two Numbers (Write a program to add two numbers)
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+
+<TextView
+android:id="@+id/textView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentTop="true"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="97dp"
+android:text="Addition"
+android:textAppearance="?android:attr/textAppearanceMedium" />
+<TextView
+android:id="@+id/textView2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentLeft="true"
+android:layout_below="@+id/textView1"
+android:layout_marginLeft="20dp"
+android:layout_marginTop="43dp"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 3
+android:text="Number One"
+android:textAppearance="?android:attr/textAppearanceMedium" />
+<EditText
+android:id="@+id/txtNumber1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignBottom="@+id/textView2"
+android:layout_alignRight="@+id/textView1"
+android:ems="2"
+android:inputType="number" >
+<requestFocus />
+</EditText>
+<TextView
+android:id="@+id/textView3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignLeft="@+id/textView2"
+android:layout_below="@+id/textView2"
+android:layout_marginTop="47dp"
+android:text="Number Two"
+android:textAppearance="?android:attr/textAppearanceMedium" />
+<Button
+android:id="@+id/btnAdd"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignLeft="@+id/textView3"
+android:layout_alignRight="@+id/textView3"
+android:layout_below="@+id/textView3"
+android:layout_marginTop="46dp"
+android:text="Add" />
+<EditText
+android:id="@+id/txtNumber2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_above="@+id/btnAdd"
+android:layout_alignLeft="@+id/txtNumber1"
+android:ems="2"
+android:inputType="number" />
+<TextView
+android:id="@+id/txtResult"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignRight="@+id/txtNumber2"
+android:layout_alignTop="@+id/btnAdd"
+android:textAppearance="?android:attr/textAppearanceMedium" />
+</RelativeLayout>
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 4
+MainActivity.java file
+package com.andoubleos.twosum;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+ EditText firstNumber;
+ EditText secondNumber;
+ TextView addResult;
+ Button btnAdd;
+
+double num1,num2,sum;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ firstNumber = (EditText)findViewById(R.id.txtNumber1);
+ secondNumber = (EditText)findViewById(R.id.txtNumber2);
+ addResult = (TextView)findViewById(R.id.txtResult);
+ btnAdd = (Button)findViewById(R.id.btnAdd);
+
+ btnAdd.setOnClickListener(new OnClickListener() {
+
+ public void onClick(View v) {
+ num1 = Double.parseDouble(firstNumber.getText().toString());
+ num2 = Double.parseDouble(secondNumber.getText().toString());
+ sum = num1 + num2;
+ addResult.setText(Double.toString(sum));
+ }
+ });
+ }
+}
+
+
+3. Date and Time Dialog box( Write a program to display date and time using dialog box)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android">
+<TextView
+ android:id="@+id/lblDateAndTime"
+ android:layout_width="fill_parent"
+ android:layout_height="67dp"
+ android:background="#FFFFFF"
+ android:textStyle="bold">
+</TextView>
+<Button
+ android:id="@+id/btnDate"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:text="Set the Date">
+</Button>
+<Button
+ android:id="@+id/btnTime"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:text="Set the Time" />
+</LinearLayout>
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 6
+MainActivity.java file
+package gems.andoubleos.threedateandtime;
+import android.app.Activity;
+import android.os.Bundle;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+import android.widget.TextView;
+import java.text.DateFormat;
+import java.util.Calendar;
+public class MainActivity extends Activity {
+ DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
+ TextView lblDateAndTime;
+ Calendar myCalendar = Calendar.getInstance();
+ DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener()
+{
+public void onDateSet(DatePicker view, int year, int monthOfYear,
+ int dayOfMonth) {
+myCalendar.set(Calendar.YEAR, year);
+myCalendar.set(Calendar.MONTH, monthOfYear);
+myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+ updateLabel();
+ }
+ };
+ TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener()
+{
+public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+ myCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+ myCalendar.set(Calendar.MINUTE, minute);
+ updateLabel();
+ }
+ };
+private void updateLabel() {
+ lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
+ }
+@Override
+public void onCreate(Bundle icicle) {
+super.onCreate(icicle);
+ setContentView(R.layout.activity_main);
+lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
+ Button btnDate = (Button) findViewById(R.id.btnDate);
+
+btnDate.setOnClickListener(new View.OnClickListener() {
+ public void onClick(View v) {
+ new DatePickerDialog(MainActivity.this, d, myCalendar
+ .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 7
+ myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+ }
+ });
+ Button btnTime = (Button) findViewById(R.id.btnTime);
+ btnTime.setOnClickListener(new View.OnClickListener() {
+ public void onClick(View v) {
+ new TimePickerDialog(MainActivity.this, t, myCalendar
+ .get(Calendar.HOUR_OF_DAY), myCalendar
+ .get(Calendar.MINUTE), true).show();
+ }
+ });
+ updateLabel();
+ }
+}
+
+
+4. Alert Box (Write a program to Display an alert box with OK and Cancel)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:orientation="vertical" >
+ <Button
+ android:id="@+id/buttonAlert"
+ android:layout_width="wrap_content"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 8
+ android:layout_height="wrap_content"
+ android:text="Show Alert Box" />
+</LinearLayout>
+MainActivity.java file
+package gems.andoubleos.fouralertbox;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+public class MainActivity extends Activity {
+final Context context = this;
+private Button button;
+public void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ button = (Button) findViewById(R.id.buttonAlert);
+ // add button listener
+ button.setOnClickListener(new OnClickListener() {
+ @Override
+ public void onClick(View arg0) {
+ AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+ context);
+ // set title
+ alertDialogBuilder.setTitle("Your Title");
+ // set dialog message
+ alertDialogBuilder
+ .setMessage("Click yes to exit!")
+ .setCancelable(false)
+ .setPositiveButton("Yes",new DialogInterface.OnClickListener()
+{
+ public void onClick(DialogInterface dialog,int id) {
+ // if this button is clicked, close
+ // current activity
+ MainActivity.this.finish();
+ }
+ })
+ .setNegativeButton("No",new DialogInterface.OnClickListener()
+{
+ public void onClick(DialogInterface dialog,int id) {
+ // if this button is clicked, just close
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 9
+ // the dialog box and do nothing
+ dialog.cancel();
+ }
+ });
+ // create alert dialog
+ AlertDialog alertDialog = alertDialogBuilder.create();
+ // show it
+ alertDialog.show();
+ }
+ });
+ }
+}
+Output
+5. Menu Program(Write a Program to create menu with three menu items)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical"
+ android:padding="10dip"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content">
+
+ <TextView
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="10dip"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 10
+ android:text="Category:"
+ android:layout_marginBottom="5dp"/>
+
+ <Spinner
+ android:id="@+id/spinner"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:prompt="@string/spinner_title"/>
+
+</LinearLayout>
+MainActivity.java file
+package gems.andoubleos.spinner;
+import java.util.ArrayList;
+import java.util.List;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
+
+class AndroidSpinnerExampleActivity extends Activity implements
+OnItemSelectedListener{
+ @Override
+ public void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ // Spinner element
+ Spinner spinner = (Spinner) findViewById(R.id.action_settings);
+
+ // Spinner click listener
+ spinner.setOnItemSelectedListener(this);
+
+ // Spinner Drop down elements
+ List<String> categories = new ArrayList<String>();
+ categories.add("Automobile");
+ categories.add("Business Services");
+ categories.add("Computers");
+ categories.add("Education");
+ categories.add("Personal");
+ categories.add("Travel");
+
+ ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+android.R.layout.simple_spinner_item, categories);
+
+
+dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+ spinner.setAdapter(dataAdapter);
+ }
+ @Override
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 11
+ public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+{
+ String item = parent.getItemAtPosition(position).toString();
+
+ Toast.makeText(parent.getContext(), "Selected: " + item,
+Toast.LENGTH_LONG).show();
+ }
+ public void onNothingSelected(AdapterView<?> arg0) {
+ }
+}
+Output
+6. Radio Button(Write a Program to Select gender using radio button)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:orientation="vertical" >
+ <RadioGroup
+ android:id="@+id/radioSex"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content" >
+ <RadioButton
+ android:id="@+id/radioMale"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/radio_male"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 12
+ android:checked="true" />
+ <RadioButton
+ android:id="@+id/radioFemale"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/radio_female" />
+ </RadioGroup>
+ <Button
+ android:id="@+id/btnDisplay"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/btn_display" />
+</LinearLayout>
+MainActivity.java file
+package gems.andoubleos.sixradiobutton;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+public class MainActivity extends Activity {
+private RadioGroup radioSexGroup;
+private RadioButton radioSexButton;
+private Button btnDisplay;
+@Override
+public void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ addListenerOnButton();
+ }
+public void addListenerOnButton() {
+ radioSexGroup = (RadioGroup) findViewById(R.id.radioSex);
+ btnDisplay = (Button) findViewById(R.id.btnDisplay);
+ btnDisplay.setOnClickListener(new OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ // get selected radio button from radioGroup
+ int selectedId = radioSexGroup.getCheckedRadioButtonId();
+ // find the radiobutton by returned id
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 13
+ radioSexButton = (RadioButton) findViewById(selectedId);
+ Toast.makeText(MainActivity.this,
+ radioSexButton.getText(), Toast.LENGTH_SHORT).show();
+ }
+ });
+ }
+}
+Output
+7. Spinner(Write a Program To Spin the four items)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+android:id="@+id/myLinearLayout"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android">
+<TextView
+ android:id="@+id/selection"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:background="#ff0033cc"
+ android:textColor="#ff0000"
+ android:textSize="25dp"
+ android:textStyle="bold">
+</TextView>
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 14
+<Spinner
+ android:id="@+id/spinner"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content">
+</Spinner>
+</LinearLayout>
+MainActivity.java file
+package gems.andoubleos.sevenspinnercontrol;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+public class MainActivity extends Activity implements
+ AdapterView.OnItemSelectedListener {
+ TextView selection;
+ String[] items = { "an double os", "COMPUTER", "MOUSE", "KEYBORD", "MONITOR",
+ "HARD DISK", "LAPTOP", "PRINTER", "SCANNER", "SPEAKER" };
+@Override
+public void onCreate(Bundle icicle) {
+ super.onCreate(icicle);
+ setContentView(R.layout.activity_main);
+ selection = (TextView) findViewById(R.id.selection);
+ Spinner spin = (Spinner) findViewById(R.id.spinner);
+ spin.setOnItemSelectedListener(this);
+ ArrayAdapter aa = new
+ArrayAdapter(this,android.R.layout.simple_spinner_item,items);
+ aa.setDropDownViewResource(
+ android.R.layout.simple_spinner_dropdown_item);
+ spin.setAdapter(aa);
+ }
+public void onItemSelected(AdapterView<?> parent, View v, int position,
+ long id) {
+ selection.setText(items[position]);
+ }
+public void onNothingSelected(AdapterView<?> parent) {
+ selection.setText("");
+ }
+}
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 15
+Output
+8. Timer Program (Write a Program to display Stop watch)
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:background="#000000"
+ android:layout_height="match_parent" >
+ <TextView
+ android:id="@+id/timerValue"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_above="@+id/pauseButton"
+ android:layout_centerHorizontal="true"
+ android:layout_marginBottom="37dp"
+ android:textSize="40sp"
+ android:textColor="#ffffff"
+ android:text="@string/timerVal" />
+ <Button
+ android:id="@+id/startButton"
+ android:layout_width="90dp"
+ android:layout_height="45dp"
+ android:layout_alignParentLeft="true"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 16
+ android:layout_centerVertical="true"
+ android:layout_marginLeft="38dp"
+ android:text="@string/startButtonLabel" />
+ <Button
+ android:id="@+id/pauseButton"
+ android:layout_width="90dp"
+ android:layout_height="45dp"
+ android:layout_alignBaseline="@+id/startButton"
+ android:layout_alignBottom="@+id/startButton"
+ android:layout_alignParentRight="true"
+ android:layout_marginRight="38dp"
+ android:text="@string/pauseButtonLabel" />
+ <Button
+ android:id="@+id/resetButton"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_below="@+id/startButton"
+ android:layout_marginTop="28dp"
+ android:layout_toLeftOf="@+id/pauseButton"
+ android:text="@string/resetButtonLabel" />
+</RelativeLayout>
+MainActivity.java file
+package gems.andoubleos.eightstopwatch;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+private Button startButton;
+private Button pauseButton;
+private Button resetButton;
+
+private TextView timerValue;
+
+private long startTime = 0L;
+
+private Handler customHandler = new Handler();
+
+long timeInMilliseconds = 0L;
+long timeSwapBuff = 0L;
+long updatedTime = 0L;
+@Override
+public void onCreate(Bundle savedInstanceState) {
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 17
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ timerValue = (TextView) findViewById(R.id.timerValue);
+ startButton = (Button) findViewById(R.id.startButton);
+
+ startButton.setOnClickListener(new View.OnClickListener() {
+
+ public void onClick(View view) {
+ startTime = SystemClock.uptimeMillis();
+ customHandler.postDelayed(updateTimerThread, 0);
+ }
+ });
+ resetButton = (Button) findViewById(R.id.resetButton);
+ resetButton.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View view) {
+ /* MillisecondTime = 0L ;
+ StartTime = 0L ;
+ TimeBuff = 0L ;
+ UpdateTime = 0L ;
+ Seconds = 0 ;
+ Minutes = 0 ;
+ MilliSeconds = 0 ; */
+ timerValue.setText("00:00:00");
+ // adapter.notifyDataSetChanged();
+ }
+ });
+ pauseButton = (Button) findViewById(R.id.pauseButton);
+
+ pauseButton.setOnClickListener(new View.OnClickListener() {
+
+ public void onClick(View view) {
+
+timeSwapBuff += timeInMilliseconds;
+ customHandler.removeCallbacks(updateTimerThread);
+ }
+ });
+ }
+private Runnable updateTimerThread = new Runnable() {
+ public void run() {
+
+ timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+
+ updatedTime = timeSwapBuff + timeInMilliseconds;
+ int secs = (int) (updatedTime / 1000);
+ int mins = secs / 60;
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 18
+ secs = secs % 60;
+ int milliseconds = (int) (updatedTime % 1000);
+ timerValue.setText("" + mins + ":"
+ + String.format("%02d", secs) + ":"
+ + String.format("%03d", milliseconds));
+ customHandler.postDelayed(this, 0);
+ }
+ };
+}
+Output
+9. Check box(Write a Program to check the items listed)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:orientation="vertical" >
+
+ <CheckBox
+ android:id="@+id/android"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/chk_first" />
+
+ <CheckBox
+ android:id="@+id/java"
+ android:layout_width="wrap_content"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 19
+ android:layout_height="wrap_content"
+ android:text="@string/chk_second"
+ android:checked="true" />
+
+ <CheckBox
+ android:id="@+id/opencv"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/chk_third" />
+
+ <CheckBox
+ android:id="@+id/symbian"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/chk_fourth" />
+
+ <Button
+ android:id="@+id/Clickhere"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/btn_click" />
+
+</LinearLayout>
+MainActivity.java file
+package gems.andoubleos.ninecheckbox;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+ private CheckBox android, java, opencv, symbian;
+ private Button Clickhere;
+
+ @Override
+ public void onCreate(Bundle savedInstanceState) {
+
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ android = (CheckBox) findViewById(R.id.android);
+ java = (CheckBox) findViewById(R.id.java);
+ opencv = (CheckBox) findViewById(R.id.opencv);
+ symbian = (CheckBox) findViewById(R.id.symbian);
+ Clickhere = (Button) findViewById(R.id.Clickhere);
+
+
+ Clickhere.setOnClickListener(new OnClickListener() {
+
+ @Override
+ public void onClick(View v) {
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 20
+
+ // Create string buffer to
+
+ StringBuffer OUTPUT = new StringBuffer();
+ OUTPUT.append("Android : ")
+ .append(android.isChecked());
+
+ OUTPUT.append("\nJava : ").append(
+ java.isChecked());
+
+ OUTPUT.append("\nOpenCV :").append(
+ opencv.isChecked());
+
+ OUTPUT.append("\nSymbian :").append(
+ symbian.isChecked());
+
+ Toast.makeText(MainActivity.this, OUTPUT.toString(),
+ Toast.LENGTH_LONG).show();
+
+ }
+ });
+
+ }
+}
+Output
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 21
+10. Date Time Picker(Write a Program to Select current system time using date time picker)
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+ android:layout_height="match_parent"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+tools:context=".MainActivity">
+ <EditText
+ android:layout_width="200dp"
+ android:layout_height="wrap_content"
+ android:id="@+id/in_date"
+ android:layout_marginTop="82dp"
+ android:layout_alignParentTop="true"
+ android:layout_alignParentLeft="true"
+ android:layout_alignParentStart="true" />
+ <Button
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/sel_date"
+ android:id="@+id/btn_date"
+ android:layout_alignBottom="@+id/in_date"
+ android:layout_toRightOf="@+id/in_date"
+ android:layout_toEndOf="@+id/in_date" />
+ <EditText
+ android:layout_width="200dp"
+ android:layout_height="wrap_content"
+ android:id="@+id/in_time"
+ android:layout_below="@+id/in_date"
+ android:layout_alignParentLeft="true"
+ android:layout_alignParentStart="true" />
+ <Button
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/sel_time"
+ android:id="@+id/btn_time"
+ android:layout_below="@+id/btn_date"
+ android:layout_alignLeft="@+id/btn_date"
+ android:layout_alignStart="@+id/btn_date" />
+</RelativeLayout>
+MainActivity.java file
+package gems.andoubleos.tencurrentsystemtime;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.app.Activity;
+import android.os.Bundle;
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 22
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
+import java.util.Calendar;
+public class MainActivity extends Activity implements
+ View.OnClickListener {
+ Button btnDatePicker, btnTimePicker;
+ EditText txtDate, txtTime;
+ private int mYear, mMonth, mDay, mHour, mMinute;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ btnDatePicker=(Button)findViewById(R.id.btn_date);
+ btnTimePicker=(Button)findViewById(R.id.btn_time);
+ txtDate=(EditText)findViewById(R.id.in_date);
+ txtTime=(EditText)findViewById(R.id.in_time);
+ btnDatePicker.setOnClickListener(this);
+ btnTimePicker.setOnClickListener(this);
+ }
+ @Override
+ public void onClick(View v) {
+ if (v == btnDatePicker) {
+ // Get Current Date
+ final Calendar c = Calendar.getInstance();
+ mYear = c.get(Calendar.YEAR);
+ mMonth = c.get(Calendar.MONTH);
+ mDay = c.get(Calendar.DAY_OF_MONTH);
+ DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+ new DatePickerDialog.OnDateSetListener() {
+ @Override
+ public void onDateSet(DatePicker view, int year,
+ int monthOfYear, int dayOfMonth) {
+ txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-"
++ year);
+ }
+ }, mYear, mMonth, mDay);
+ datePickerDialog.show();
+ }
+ if (v == btnTimePicker) {
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 23
+ // Get Current Time
+ final Calendar c = Calendar.getInstance();
+ mHour = c.get(Calendar.HOUR_OF_DAY);
+ mMinute = c.get(Calendar.MINUTE);
+
+
+ // Launch Time Picker Dialog
+ TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+ new TimePickerDialog.OnTimeSetListener() {
+ @Override
+ public void onTimeSet(TimePicker view, int hourOfDay,
+ int minute) {
+
+ txtTime.setText(hourOfDay + ":" + minute);
+ }
+ }, mHour, mMinute, false);
+ timePickerDialog.show();
+ }
+ }
+}
+Output
+
+
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 24
+11. Grid View (Write a Program to display contacts using Grid View Control)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+ android:id="@+id/gridview"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:columnWidth="90dp"
+ android:numColumns="auto_fit"
+ android:verticalSpacing="10dp"
+ android:horizontalSpacing="10dp"
+ android:stretchMode="columnWidth"
+ android:gravity="center"
+/>
+MainActivity.java file
+package gems.andoubleos.hellogridview;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.GridView;
+public class MainActivity extends Activity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ GridView gridview = (GridView) findViewById(R.id.gridview);
+ gridview.setAdapter(new ImageAdapter(this));
+ }
+}
+ImageAdapter.java
+package gems.andoubleos.hellogridview;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+public class ImageAdapter extends BaseAdapter {
+ private Context mContext;
+
+ // Constructor
+ public ImageAdapter(Context c) {
+ mContext = c;
+ }
+
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 25
+ public int getCount() {
+ return mThumbIds.length;
+ }
+ public Object getItem(int position) {
+ return null;
+ }
+ public long getItemId(int position) {
+ return 0;
+ }
+
+ // create a new ImageView for each item referenced by the Adapter
+ public View getView(int position, View convertView, ViewGroup parent) {
+ ImageView imageView;
+
+ if (convertView == null) {
+ imageView = new ImageView(mContext);
+ imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+ imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+ imageView.setPadding(8, 8, 8, 8);
+ }
+ else
+ {
+ imageView = (ImageView) convertView;
+ }
+ imageView.setImageResource(mThumbIds[position]);
+ return imageView;
+ }
+
+ // Keep all Images in array
+ public Integer[] mThumbIds = {
+ R.drawable.sample_2, R.drawable.sample_3,
+ R.drawable.sample_4, R.drawable.sample_5,
+ R.drawable.sample_6, R.drawable.sample_7,
+ R.drawable.sample_0, R.drawable.sample_1,
+ R.drawable.sample_2, R.drawable.sample_3,
+ R.drawable.sample_4, R.drawable.sample_5,
+ R.drawable.sample_6, R.drawable.sample_7,
+ R.drawable.sample_0, R.drawable.sample_1,
+ R.drawable.sample_2, R.drawable.sample_3,
+ R.drawable.sample_4, R.drawable.sample_5,
+ R.drawable.sample_6, R.drawable.sample_7
+ };
+}
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 26
+Output
+12. Image View (Write a Program to Display images from local drive of the computer)
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:orientation="vertical" >
+ <ImageView
+ android:id="@+id/imageView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:src="@drawable/android" />
+ <Button
+ android:id="@+id/btnChangeImage"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Change Image" />
+
+</LinearLayout>
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 27
+MainActivity.java file
+package gems.andoubleos.twelvedisplayimage;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+public class MainActivity extends Activity {
+ Button button;
+ ImageView image;
+@Override
+public void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ addListenerOnButton();
+ }
+public void addListenerOnButton() {
+ image = (ImageView) findViewById(R.id.imageView1);
+ button = (Button) findViewById(R.id.btnChangeImage);
+ button.setOnClickListener(new OnClickListener() {
+ @Override
+ public void onClick(View arg0) {
+ image.setImageResource(R.drawable.android3d);
+ }
+ });
+ }
+}
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 28
+Output
+
+13. List View(Write a Program to Display the items in a list)
+MainActivity.java file
+package gems.andoubleos.thirteendisplayitemslist;
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+public class MainActivity extends ListActivity {
+static final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
+ "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
+ "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
+@Override
+public void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 29
+ setListAdapter(new ArrayAdapter<String>(this,
+R.layout.activity_main,FRUITS));
+ ListView listView = getListView();
+ listView.setTextFilterEnabled(true);
+ listView.setOnItemClickListener(new OnItemClickListener() {
+ public void onItemClick(AdapterView<?> parent, View view,
+ int position, long id) {
+ Toast.makeText(getApplicationContext(),
+ ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+ }
+ });
+ }
+}
+activity_main.xml file
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:padding="10dp"
+ android:textSize="20sp" >
+</TextView>
+Output
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 30
+14. Fetch data from an EditText and display it in a TextView
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+ <EditText
+ android:id="@+id/editText1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignLeft="@+id/textView1"
+ android:layout_alignParentTop="true"
+ android:layout_marginTop="48dp"
+ android:ems="10"
+ android:inputType="textPersonName" >
+ <requestFocus />
+ </EditText>
+ <EditText
+ android:id="@+id/editText2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignLeft="@+id/editText1"
+ android:layout_below="@+id/editText1"
+ android:layout_marginTop="28dp"
+ android:ems="10"
+ android:inputType="textPersonName" />
+ <Button
+ android:id="@+id/button1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignLeft="@+id/editText2"
+ android:layout_below="@+id/editText2"
+ android:layout_marginTop="50dp"
+ android:text="Button" />
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentRight="true"
+ android:layout_below="@+id/button1"
+ android:layout_marginRight="184dp"
+ android:layout_marginTop="136dp"
+ android:text="Display Here"
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 31
+</RelativeLayout>
+MainActivity.java file
+package com.andoubleos.editanddisplay;
+import android.os.Bundle;
+import android.app.Activity;
+import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+ Button butn;
+ EditText text1;
+ EditText text2;
+ TextView txtview;
+
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ butn=(Button)findViewById(R.id.button1);
+ txtview=(TextView)findViewById(R.id.textView1);
+ txtview.setMovementMethod(new ScrollingMovementMethod());
+
+ butn.setOnClickListener(new View.OnClickListener() {
+
+ @Override
+ public void onClick(View arg0) {
+ // TODO Auto-generated method stub
+ text1= (EditText)findViewById(R.id.editText1);
+ text2= (EditText)findViewById(R.id.editText2);
+
+txtview.setText(text1.getText().toString()+"\n"+text2.getText().toString());
+
+ }
+ });
+ }
+}
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 32
+Output
+15. Write a program to display multiplication table of a given number
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+ <Button
+ android:id="@+id/button1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignBottom="@+id/editText1"
+ android:layout_alignParentRight="true"
+ android:layout_marginRight="78dp"
+ android:text="Button" />
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 33
+ android:layout_alignLeft="@+id/editText1"
+ android:layout_alignParentBottom="true"
+ android:layout_below="@+id/editText1"
+ android:layout_marginTop="41dp"
+ android:text=" "
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+ <EditText
+ android:id="@+id/editText1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentLeft="true"
+ android:layout_alignParentTop="true"
+ android:layout_marginLeft="57dp"
+ android:ems="10" />
+</RelativeLayout>
+MainActivity.java file
+package com.andoubleos.multable;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+ EditText editText;
+ Button button;
+ TextView result;
+int ans=0;
+
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ editText=(EditText)findViewById(R.id.editText1);
+ button=(Button)findViewById(R.id.button1);
+ result=(TextView)findViewById(R.id.textView1);
+
+ button.setOnClickListener(new OnClickListener() {
+
+ @Override
+ public void onClick(View arg0) {
+ // TODO Auto-generated method stub
+ StringBuffer buffer = new StringBuffer();
+ String fs=editText.getText().toString();
+ int n = Integer.parseInt(fs);
+ for (int i = 1; i <= 15; i++) {
+ ans = (i * n);
+ buffer.append(i + " X " + n + " = " + ans + "\n");
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 34
+ result.setText(buffer);
+ }
+ }
+ });
+ }
+}
+Output
+16. Write a program to Get IP Address of the device
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentBottom="true"
+ android:layout_alignParentLeft="true"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 35
+ android:layout_marginBottom="143dp"
+ android:layout_marginLeft="174dp"
+ android:text="Large Text"
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+ <Button
+ android:id="@+id/button1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignLeft="@+id/textView1"
+ android:layout_alignParentTop="true"
+ android:layout_marginTop="124dp"
+ android:text="Get IP Address" />
+</RelativeLayout>
+MainActivity.java file
+package com.andoubleos.getip;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.app.Activity;
+import android.text.format.Formatter;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+ Button buttn;
+ TextView txtview;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ buttn=(Button)findViewById(R.id.button1);
+ buttn.setOnClickListener(new OnClickListener() {
+
+ @Override
+ public void onClick(View arg0) {
+ // TODO Auto-generated method stub
+ txtview = (TextView) findViewById(R.id.textView1);
+ WifiManager wifiManager =
+(WifiManager)getSystemService(WIFI_SERVICE);
+ String ipAddress=
+Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+ txtview.setText("Your Device IP Address: " + ipAddress);
+ }
+ });
+ }
+}
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 36
+Output
+17. Write a program to Change the Background colour of the Activity
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:id="@+id/rl"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+ <Button
+ android:id="@+id/button1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentLeft="true"
+ android:layout_alignParentTop="true"
+ android:layout_marginLeft="88dp"
+ android:layout_marginTop="242dp"
+ android:text="Apply Background Colour" />
+</RelativeLayout>
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 37
+MainActivity.java file
+package com.andoubleos.bgcolor;
+import android.os.Bundle;
+import android.app.Activity;
+import android.graphics.Color;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+public class MainActivity extends Activity {
+ Button butn;
+
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ final RelativeLayout r1 = (RelativeLayout)findViewById(R.id.rl);
+ butn= (Button)findViewById(R.id.button1);
+ butn.setOnClickListener(new OnClickListener() {
+
+ @Override
+ public void onClick(View arg0) {
+ r1.setBackgroundColor(Color.YELLOW);
+ }
+ });
+ }
+}
+Output
+
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 38
+18. Write a program to Change the Background image
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".ToastMainActivity" >
+
+ <Button
+ android:id="@+id/button1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentBottom="true"
+ android:layout_alignParentLeft="true"
+ android:layout_marginBottom="100dp"
+ android:layout_marginLeft="58dp"
+ android:text="Image 1" />
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignBottom="@+id/button1"
+ android:layout_centerHorizontal="true"
+ android:text="Image 2" />
+ <ImageView
+ android:id="@+id/imageView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_above="@+id/button2"
+ android:layout_alignRight="@+id/button2"
+ android:minHeight="300dp"
+ android:minWidth="300dp"
+ android:src="@drawable/bg3" />
+</RelativeLayout>
+MainActivity.java file
+package com.andoubleos.bgimage;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+public class MainActivity extends Activity implements View.OnClickListener{
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 39
+ ImageView v1;
+ Button btn1;
+ Button btn2;
+
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ btn1=(Button)findViewById(R.id.button1);
+ btn2=(Button)findViewById(R.id.button2);
+ v1=(ImageView)findViewById(R.id.imageView1);
+ btn1.setOnClickListener(this);
+ btn2.setOnClickListener(this);
+ }
+
+ @Override
+public void onClick(View v) {
+ // TODO Auto-generated method stub
+ switch(v.getId()){
+ case R.id.button1:
+ v1.setImageResource(R.drawable.bg1);
+ break;
+ case R.id.button2:
+ v1.setImageResource(R.drawable.bg2);
+ break;
+ }
+ }
+}
+Output
+
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 40
+19. Program using array adapter
+activity_main.xml file
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+ <ListView
+ android:id="@+id/listView1"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_weight="1" >
+ </ListView>
+</LinearLayout>
+MainActivity.java file
+package com.andoubleos.arryadapter;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.Toast;
+public class MainActivity extends Activity {
+
+ ListView lst;
+ String[] months =
+{"Janaury","Feb","March","April","May","June","July","August","September","Octomber","
+November","December"};
+
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ lst= (ListView) findViewById(R.id.listView1);
+ ArrayAdapter<String> arrayadapter=new
+ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,months);
+ lst.setAdapter(arrayadapter);
+ lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+ @Override
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 41
+ public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+ TextView tv= (TextView) view;
+ Toast.makeText(MainActivity.this,tv.getText()+"
+"+position,Toast.LENGTH_LONG).show();
+ }
+ });
+}
+Output
+20. Program to start another activity from your own activity using intent
+activity_main.xml file
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:paddingBottom="@dimen/activity_vertical_margin"
+ android:paddingLeft="@dimen/activity_horizontal_margin"
+ android:paddingRight="@dimen/activity_horizontal_margin"
+ android:paddingTop="@dimen/activity_vertical_margin"
+ tools:context=".MainActivity" >
+ <Button
+ android:id="@+id/button1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentBottom="true"
+ android:layout_centerHorizontal="true"
+ android:layout_marginBottom="236dp"
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 42
+ android:text="Button" />
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_alignParentLeft="true"
+ android:layout_alignParentTop="true"
+ android:text="You are in First Activity"
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+</RelativeLayout>
+Nextactivitylayout.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical" >
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="You are in Second Activity"
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+</LinearLayout>
+MainActivity.java file
+package com.example.activityintent;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+public class MainActivity extends Activity {
+ Button jumpbtn;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+
+ jumpbtn = (Button)findViewById(R.id.button1);
+ jumpbtn.setOnClickListener(new View.OnClickListener() {
+
+ @Override
+ public void onClick(View v) {
+ // TODO Auto-generated method stub
+ Intent i = new Intent(MainActivity.this,nextactivity.class);
+ startActivity(i);
+ }
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 43
+ });
+ }
+ }
+Nextactivity.java
+package com.example.activityintent;
+import android.app.Activity;
+import android.os.Bundle;
+public class nextactivity extends Activity{
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+ // TODO Auto-generated method stub
+
+ setContentView(R.layout.nextactivitylayout);
+
+ super.onCreate(savedInstanceState);
+ }
+}
+AndroidManifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ package="com.example.activityintent"
+ android:versionCode="1"
+ android:versionName="1.0" >
+ <uses-sdk
+ android:minSdkVersion="8"
+ android:targetSdkVersion="17" />
+ <application
+ android:allowBackup="true"
+ android:icon="@drawable/ic_launcher"
+ android:label="@string/app_name"
+ android:theme="@style/AppTheme" >
+ <activity
+ android:name="com.example.activityintent.MainActivity"
+ android:label="@string/app_name" >
+ <intent-filter>
+ <action android:name="android.intent.action.MAIN" />
+ <category android:name="android.intent.category.LAUNCHER" />
+ </intent-filter>
+ </activity>
+ <activity
+ android:name="com.example.activityintent.nextactivity"
+ android:label="@string/app_name" >
+ </activity>
+ </application>
+</manifest>
+ GEMS Arts and Science College
+pkandoubleos@gmail.com Page 44
+Output
+ 
